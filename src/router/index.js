@@ -54,6 +54,12 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/dscReceita",
+    name: "descReceita",
+    component: () =>
+      import(/* webpackChunkName: "perfil" */ "../views/dscReceita.vue"),
+  },
 ];
 
 const router = new VueRouter({

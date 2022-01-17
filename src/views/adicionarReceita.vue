@@ -11,19 +11,18 @@
             <v-text-field
               label="Nome da Receita"
               v-model="novaReceita"
-              @keydown.enter="adicionar"
-              class="mt-4 ml-7 mr-2"
+              class="mt-2 ml-7 mr-2"
               rounded
               solo
               dense
               placeholder="Nome da receita"
-              @click="adicionar"
             >
             </v-text-field>
           </v-form>
 
           <template>
             <v-file-input
+              v-model="imagem"
               label="Adicionar imagem da receita"
               filled
               prepend-icon="mdi-camera"
@@ -39,10 +38,11 @@
             </h2>
           </v-div>
           <v-textarea
+            name="igredientes"
             solo
             color="black"
             auto-grow
-            name="input-7-4"
+            v-model="igredientes"
             label="Escreva cada ingrediente por linha.Exemplo: 4x ovos "
           ></v-textarea>
         </v-col>
@@ -55,6 +55,8 @@
           >
           <v-row>
             <v-text-field
+              name="hora"
+              v-model="hora"
               prepend-inner-icon="mdi-timer"
               rounded
               filled
@@ -64,6 +66,8 @@
             ></v-text-field>
             <h1 class="mt-4">:</h1>
             <v-text-field
+              name="minuto"
+              v-model="minuto"
               prepend-inner-icon="mdi-timer"
               rounded
               solo
@@ -80,15 +84,18 @@
               Modo de preparo
             </h2>
             <v-textarea
+              name="passos"
+              v-model="passos"
               class="mt-3"
               solo
               color="black"
               auto-grow
-              name="input-7-4"
               label="Descreva os passos por linha.  "
             ></v-textarea>
           </v-div>
-          <v-btn block rounded color="orange">Enviar receita</v-btn>
+          <v-btn @click="adicionar" block rounded color="orange"
+            >Enviar receita</v-btn
+          >
         </v-col>
         <v-col>
           <v-img src="@/assets/images/Frigideira.png"></v-img>
@@ -103,36 +110,25 @@ import * as fb from "@/plugins/firebase";
 export default {
   data() {
     return {
-      uid: "",
       novaReceita: "",
-      tarefas: [],
+      imagem: "",
+      igredientes: "",
+      hora: "",
+      minuto: "",
+      passos: "",
     };
   },
-  mounted() {
-    this.uid = fb.auth.currentUser.uid;
-    this.buscarTarefasDoServidor();
-  },
   methods: {
-    async buscarTarefasDoServidor() {
-      this.tarefas = [];
-      const logTasks = await fb.tasksCollection
-        .where("owner", "==", this.uid)
-        .get();
-      for (const doc of logTasks.docs) {
-        this.tarefas.push({
-          id: doc.id,
-          titulo: doc.data().titulo,
-        });
-      }
-    },
     async adicionar() {
       await fb.tasksCollection.add({
-        titulo: this.novaReceita,
-        dataGravacao: new Date().toISOString().slice(0, 10),
-        owner: this.uid,
+        novaReceita: this.novaReceita,
+        imagens: this.imagem,
+        igredientes: this.igredientes,
+        hora: this.hora,
+        minuto: this.minuto,
+        modoPreparo: this.passos,
       });
-      this.novaReceita = "";
-      this.buscarTarefasDoServidor();
+      console.log("receita adicionada");
     },
   },
 };

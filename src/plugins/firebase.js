@@ -3,12 +3,12 @@ import "firebase/compat/auth";
 import "firebase/compat/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDDZlaoSveENkGZR4O3pKm7uMg5xSYO9us",
-  authDomain: "pani-5d6e0.firebaseapp.com",
-  projectId: "pani-5d6e0",
-  storageBucket: "pani-5d6e0.appspot.com",
-  messagingSenderId: "831180523868",
-  appId: "1:831180523868:web:691ceb73f5addfbc7e1999",
+  apiKey: "AIzaSyDfRE6VXv_BorI82Ths7BWLVgyuzorGoSA",
+  authDomain: "site-receita-149e7.firebaseapp.com",
+  projectId: "site-receita-149e7",
+  storageBucket: "site-receita-149e7.appspot.com",
+  messagingSenderId: "714215294284",
+  appId: "1:714215294284:web:591021635495b09d39fbe9",
 };
 
 firebase.initializeApp(firebaseConfig);
