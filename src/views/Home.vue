@@ -1,22 +1,24 @@
 <template>
-  <v-container class="pa-4 text-center">
-    <v-row class="fill-height mt-4" align="center" justify="center">
-      <template v-for="(receitas, i) in tasks">
+  <v-container class="pa-4" fluid>
+    <v-row class="mt-4" align="center" justify="center">
+      <template v-for="(receita, i) in receitas">
         <v-col :key="i" cols="12" md="4">
           <v-hover v-slot="{ hover }">
             <v-card
-              @click="irDescReceita"
+              @click="irDescReceita(receita)"
               :elevation="hover ? 12 : 2"
               :class="{ 'on-hover': hover }"
             >
-              <v-img :src="receitas.imagens" height="225px">
+              <v-img :src="receita.imgChamada" height="225px">
                 <v-card-title class="text-h6 white--text">
                   <v-row
                     class="fill-height flex-column"
                     justify="space-between"
                   >
-                    <p class="mt-4 subheading text-left black--text">
-                      {{ receitas.novaReceita }}
+                    <p
+                      class="mt-4 subheading text-left black--text text-center"
+                    >
+                      {{ receita.novaReceita }}
                     </p>
 
                     <div class="align-self-center"></div>
@@ -38,7 +40,7 @@ import router from "../router";
 export default {
   data() {
     return {
-      tasks: [],
+      receitas: [],
     };
   },
 
@@ -49,23 +51,27 @@ export default {
     async buscarReceitas() {
       const logtasks = await fb.tasksCollection.get();
       for (const doc of logtasks.docs) {
-        this.tasks.push({
+        this.receitas.push({
           id: doc.id,
           hora: doc.data().hora,
           minuto: doc.data().minuto,
-          igredientes: doc.data().igredientes,
+          ingredientes: doc.data().ingredientes,
           novaReceita: doc.data().novaReceita,
-          imagens: doc.data().imagem,
-          modoPreparo: doc.data().passos,
+          imgChamada: doc.data().imgChamada,
+          modoPreparo: doc.data().modoPreparo,
         });
       }
-      console.log(this.tasks);
+      console.log(this.receitas);
     },
-    irDescReceita() {
-      router.push({ name: "descReceita" });
+    irDescReceita(receita) {
+      router.push({ name: "descReceita", params: { receita } });
     },
   },
 };
 </script>
 
-<style scoped></style>
+<style>
+.backgroud {
+  background-color: orange;
+}
+</style>

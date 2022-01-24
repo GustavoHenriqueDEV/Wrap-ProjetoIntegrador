@@ -15,7 +15,8 @@
         >{{ item.nome }}</v-btn
       >
 
-      <v-text-field
+      <v-autocomplete
+        :items="opcao"
         class="mt-6 ml-2 mr-2"
         color="black"
         rounded
@@ -23,7 +24,7 @@
         dense
         placeholder="Pesquisar receita"
         prepend-inner-icon="mdi-magnify"
-      ></v-text-field>
+      ></v-autocomplete>
 
       <v-btn
         rounded
@@ -53,6 +54,7 @@
 export default {
   data() {
     return {
+      opcao: ["Sopa", "caudo", "macarrão"],
       items: [
         {
           nome: "Perfil",

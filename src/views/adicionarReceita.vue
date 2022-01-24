@@ -1,17 +1,20 @@
 <template>
-  <v-container class="orange lighten-4" fill-height fluid>
-    <v-container class="mt-10" text-center>
-      <h1 class="h1 mb-10 orange--text">
+  <v-container class="">
+    <div class="text-center">
+      <h1 class="h1 mt-8 orange--text">
         Enviar receita
         <v-icon large color="gray">mdi-note-edit</v-icon>
       </h1>
-      <v-row class="elevation-3 mx-auto, rounded-xl">
+    </div>
+    <v-container class="mt-10" text-center>
+      <v-row class="elevation-3 mx-auto, orange lighten-3 rounded-xl">
         <v-col>
           <v-form>
             <v-text-field
+              name="Novareceita"
               label="Nome da Receita"
               v-model="novaReceita"
-              class="mt-2 ml-7 mr-2"
+              class="mt-4 mr-2"
               rounded
               solo
               dense
@@ -21,28 +24,26 @@
           </v-form>
 
           <template>
-            <v-file-input
-              v-model="imagem"
-              label="Adicionar imagem da receita"
-              filled
-              prepend-icon="mdi-camera"
-              orange
+            <v-text-field
               solo
-              color="grey "
-            ></v-file-input>
+              prepend-inner-icon="mdi-camera"
+              label="Adicionar link da imagem "
+              color="red darken-1"
+              v-model="imgChamada"
+            ></v-text-field>
           </template>
           <v-divider></v-divider>
           <v-div>
             <h2 class="h2 mt-2 orange--text">
-              <v-icon>mdi-noodles</v-icon>Igredientes
+              <v-icon>mdi-noodles</v-icon>Ingredientes
             </h2>
           </v-div>
           <v-textarea
-            name="igredientes"
+            name="ingredientes"
             solo
             color="black"
             auto-grow
-            v-model="igredientes"
+            v-model="ingredientes"
             label="Escreva cada ingrediente por linha.Exemplo: 4x ovos "
           ></v-textarea>
         </v-col>
@@ -85,7 +86,7 @@
             </h2>
             <v-textarea
               name="passos"
-              v-model="passos"
+              v-model="modoPreparo"
               class="mt-3"
               solo
               color="black"
@@ -98,7 +99,10 @@
           >
         </v-col>
         <v-col>
-          <v-img src="@/assets/images/Frigideira.png"></v-img>
+          <v-img
+            class="rounded-xl"
+            src="@/assets/images/Frigideira.png"
+          ></v-img>
         </v-col>
       </v-row>
     </v-container>
@@ -111,7 +115,7 @@ export default {
   data() {
     return {
       novaReceita: "",
-      imagem: "",
+      imgChamada: "",
       igredientes: "",
       hora: "",
       minuto: "",
@@ -122,13 +126,12 @@ export default {
     async adicionar() {
       await fb.tasksCollection.add({
         novaReceita: this.novaReceita,
-        imagens: this.imagem,
-        igredientes: this.igredientes,
+        imgChamada: this.imgChamada,
+        ingredientes: this.ingredientes,
         hora: this.hora,
         minuto: this.minuto,
-        modoPreparo: this.passos,
+        modoPreparo: this.modoPreparo,
       });
-      console.log("receita adicionada");
     },
   },
 };

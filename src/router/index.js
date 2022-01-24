@@ -57,6 +57,7 @@ const routes = [
   {
     path: "/dscReceita",
     name: "descReceita",
+    props: true,
     component: () =>
       import(/* webpackChunkName: "perfil" */ "../views/dscReceita.vue"),
   },

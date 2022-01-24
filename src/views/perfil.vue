@@ -1,6 +1,6 @@
 <template>
-  <v-container class="orange lighten-4" fill-height fluid>
-    <v-card class="mx-auto my-12 orange lighten-2 rounded-xl" width="600" teste>
+  <v-container class="orange lighten-5" fill-height fluid>
+    <v-card class="mx-auto my-12 orange lighten-2 rounded-xl" width="680" teste>
       <div>
         <h1 class="text-center">
           Minhas informações
@@ -19,7 +19,9 @@
           <v-text-field label="Nome" v-model="nome"></v-text-field>
           <v-text-field label="Sobrenome" v-model="sobrenome"></v-text-field>
           <v-text-field label="Telefone" v-model="telefone"></v-text-field>
-          <v-btn color="grey lighten-3" @click="salvarPerfil">Salvar</v-btn>
+          <div class="text-center">
+            <v-btn color="grey lighten-3 " @click="salvarPerfil">Salvar</v-btn>
+          </div>
         </v-container>
       </v-form>
     </v-card>
