@@ -5,22 +5,22 @@
         <v-col :key="i" cols="12" md="4">
           <v-hover v-slot="{ hover }">
             <v-card
+              class="rounded-xl orange lighten-5"
               @click="irDescReceita(receita)"
               :elevation="hover ? 12 : 2"
               :class="{ 'on-hover': hover }"
             >
-              <v-img :src="receita.imgChamada" height="225px">
+              <h2 class="h2">
+                <p class="subheading text-left black--text text-center">
+                  {{ receita.novaReceita }}
+                </p>
+              </h2>
+              <v-img :src="receita.imgChamada" height="250px">
                 <v-card-title class="text-h6 white--text">
                   <v-row
                     class="fill-height flex-column"
                     justify="space-between"
                   >
-                    <p
-                      class="mt-4 subheading text-left black--text text-center"
-                    >
-                      {{ receita.novaReceita }}
-                    </p>
-
                     <div class="align-self-center"></div>
                   </v-row>
                 </v-card-title>

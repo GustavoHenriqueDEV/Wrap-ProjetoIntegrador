@@ -3,7 +3,7 @@
     <div class="text-center">
       <h1 class="h1 mt-8 orange--text">
         Enviar receita
-        <v-icon large color="gray">mdi-note-edit</v-icon>
+        <v-icon large color="black">mdi-note-edit</v-icon>
       </h1>
     </div>
     <v-container class="mt-10" text-center>
@@ -114,6 +114,7 @@ import * as fb from "@/plugins/firebase";
 export default {
   data() {
     return {
+      uid: "",
       novaReceita: "",
       imgChamada: "",
       igredientes: "",
@@ -124,7 +125,9 @@ export default {
   },
   methods: {
     async adicionar() {
+      this.uid = fb.auth.currentUser.uid;
       await fb.tasksCollection.add({
+        uid: this.uid,
         novaReceita: this.novaReceita,
         imgChamada: this.imgChamada,
         ingredientes: this.ingredientes,
