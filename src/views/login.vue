@@ -30,6 +30,7 @@
               :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="show = !show"
             ></v-text-field>
+            <v-btn class="mr-2" color="primary" @click="criarNovaConta" elevation="24">Criar conta</v-btn>
             <v-btn color="primary" @click="login" elevation="24">Login</v-btn>
             <v-btn class="ml-2" color="warning" @click="reset" elevation="24"
               >Resetar</v-btn
@@ -80,6 +81,7 @@ export default {
   methods: {
     reset() {
       this.user = {};
+
     },
     async login() {
       try {
@@ -113,7 +115,8 @@ export default {
         this.user.password
       );
       this.login();
-    },
+    }, 
+    
   },
 };
 </script>
