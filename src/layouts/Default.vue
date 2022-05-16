@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar color="orange lighten-2 " absolute>
+    <v-app-bar color="orange lighten-2" absolute>
       <v-spacer></v-spacer>
       <v-btn
         rounded

@@ -1,5 +1,6 @@
 <template>
-  <v-container class="pa-4" fluid>
+<div class="orange lighten-1 fill-height" >
+  <v-container class="pa-4">
     <v-row class="mt-4" align="center" justify="center">
       <template v-for="(receita, i) in receitas">
         <v-col :key="i" cols="12" md="4">
@@ -31,6 +32,7 @@
       </template>
     </v-row>
   </v-container>
+</div>
 </template>
 
 <script>

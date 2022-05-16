@@ -1,5 +1,5 @@
 <template>
-  <v-container class="orange lighten-5" fill-height fluid>
+  <v-container class="orange lighten-3" fill-height fluid>
     <v-card class="mx-auto my-12 orange lighten-2 rounded-xl" width="680" teste>
       <div>
         <h1 class="text-center">

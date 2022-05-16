@@ -1,10 +1,29 @@
 <template>
-  <v-container class="pa-4">
+<div class="orange lighten-1 fill-height">
+  <v-container class="pa-4 ">
     <v-row class="mt-4" align="center" justify="center">
       <template v-for="(receita, i) in receitas">
         <v-col :key="i" cols="12" md="4">
+            <v-btn  
+            dark
+             class="red lighten-1" @click="deletarReceita(receita.id)">
+             
+             <v-icon>mdi-trash-can-outline</v-icon>
+             </v-btn>
+
+            <v-btn
+            @click="editarReceita(receita)"
+            class="mx-2"
+            dark
+            color="cyan">
+            <v-icon dark>
+                  mdi-pencil
+            </v-icon>
+              </v-btn>
+            
           <v-hover v-slot="{ hover }">
             <v-card
+            
               class="rounded-xl orange lighten-5"
               @click="irDescReceita(receita)"
               :elevation="hover ? 12 : 2"
@@ -31,6 +50,7 @@
       </template>
     </v-row>
   </v-container>
+  </div>
 </template>
 
 <script>
@@ -70,10 +90,17 @@ export default {
       }
       console.log(this.uid);
     },
-    DeletarReceita() {},
+    async deletarReceita(id) {
+      await fb.tasksCollection.doc(id).delete()
+      this.buscarReceitas()
+    },
     irDescReceita(receita) {
       router.push({ name: "descReceita", params: { receita } });
     },
+
+    editarReceita(receita){
+      router.push({name:"adicionarReceita", params: {receita, id: receita.id}})
+    }
   },
 };
 </script>

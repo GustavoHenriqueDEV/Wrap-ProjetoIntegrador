@@ -1,13 +1,13 @@
 <template>
-  <v-container class="">
+<div class="orange lighten-1 fill-height">
+  <v-container >
     <div class="text-center">
-      <h1 class="h1 mt-8 orange--text">
+      <h1 class="h1 mt-8 black--text">
         Enviar receita
-        <v-icon large color="black">mdi-note-edit</v-icon>
       </h1>
     </div>
     <v-container class="mt-10" text-center>
-      <v-row class="elevation-3 mx-auto, orange lighten-3 rounded-xl">
+      <v-row class="elevation-3 mx-auto, orange lighten-4 rounded-xl">
         <v-col>
           <v-form>
             <v-text-field
@@ -94,9 +94,16 @@
               label="Descreva os passos por linha.  "
             ></v-textarea>
           </v-div>
-          <v-btn @click="adicionar" block rounded color="orange"
-            >Enviar receita</v-btn
-          >
+          <v-div v-if="this.receita != undefined">
+            <v-btn  @click="atualizarReceita" rounded color="orange"
+              >Atualizar receita</v-btn
+            > 
+          </v-div>
+          <v-div v-else>
+            <v-btn @click="adicionar" block rounded color="orange"
+              >Enviar receita</v-btn
+            >
+          </v-div>
         </v-col>
         <v-col>
           <v-img
@@ -107,11 +114,13 @@
       </v-row>
     </v-container>
   </v-container>
+  </div>
 </template>
 
 <script>
 import * as fb from "@/plugins/firebase";
 export default {
+  props: ['receita'],
   data() {
     return {
       uid: "",
@@ -122,6 +131,16 @@ export default {
       minuto: "",
       passos: "",
     };
+  },
+  created(){
+    if(this.receita != undefined){
+      this.novaReceita = this.receita.novaReceita
+      this.imgChamada = this.receita.imgChamada,
+      this.ingredientes = this.receita.ingredientes,
+      this.hora = this.receita.hora,
+      this.minuto = this.receita.minuto,
+      this.modoPreparo = this.receita.modoPreparo
+    }
   },
   methods: {
     async adicionar() {
@@ -136,6 +155,16 @@ export default {
         modoPreparo: this.modoPreparo,
       });
     },
+    async atualizarReceita(){
+      await fb.tasksCollection.doc(this.receita.id).update({
+        novaReceita: this.novaReceita,
+        imgChamada: this.imgChamada,
+        ingredientes: this.ingredientes,
+        hora: this.hora,
+        minuto: this.minuto,
+        modoPreparo: this.modoPreparo,
+      })
+    }
   },
 };
 </script>
