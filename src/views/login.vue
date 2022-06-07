@@ -1,45 +1,74 @@
 <template>
-  <v-container fill-height fluid text-center class="orange lighten-2">
-    <v-container>
-      <v-row class="elevation-3 mx-auto, brown lighten-1 rounded-xl">
-        <v-col cols="auto">
-          <v-img
-            class="ml-10"
-            max-height="500"
-            max-width="500"
-            src="@/assets/images/livro.png"
-          ></v-img>
-        </v-col>
-        <v-col>
-          <h1 class="h1 orange--text">Login</h1>
-          <v-form>
-            <v-text-field
-              solo
-              orange--text
-              color="orange"
-              label="Email"
-              v-model="user.email"
-            ></v-text-field>
-            <v-text-field
-              solo
-              orange--text
-              color="orange"
-              label="Senha"
-              v-model="user.password"
-              :type="show ? 'text' : 'password'"
-              :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-              @click:append="show = !show"
-            ></v-text-field>
-            <v-btn class="mr-2" color="primary" @click="criarNovaConta" elevation="24">Criar conta</v-btn>
-            <v-btn color="primary" @click="login" elevation="24">Login</v-btn>
-            <v-btn class="ml-2" color="warning" @click="reset" elevation="24"
+  <div class="d-flex fill-height">
+    <v-row class="d-flex fill-height">
+      <v-col
+        class="d-flex justify-content-center alighn-items-center brown"
+        sm="7"
+        cols="12"
+      >
+        <div class="box-image">
+          <v-img class="rounded-xl" src="@/assets/images/leal.png"></v-img>
+        </div>
+      </v-col>
+      <v-col class="fluid col1 brown lighten-5" cols="12" sm="5">
+        <h1 class="login-text h1 black--text text-center">Login</h1>
+        <v-form class="mt-12">
+          <v-div class="blue--text ml-2"
+            >não possui uma conta?
+            <v-btn
+              small
+              class="mb-1 novaConta"
+              color="primary"
+              @click="criarNovaConta"
+              elevation="24"
+              >Criar conta</v-btn
+            >
+          </v-div>
+          <v-text-field
+            solo
+            orange--text
+            color="orange"
+            label="Email"
+            v-model="user.email"
+          ></v-text-field>
+          <v-text-field
+            solo
+            orange--text
+            color="orange"
+            label="Senha"
+            v-model="user.password"
+            :type="show ? 'text' : 'password'"
+            :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+            @click:append="show = !show"
+          ></v-text-field>
+          <div class="ml-10">
+            <v-btn
+              large
+              dark
+              class="login black"
+              color="brown"
+              @click="login"
+              elevation="24"
+              >Login</v-btn
+            >
+
+            <v-btn @click="recuperarSenha" dark class="dark"
+              >Esqueci minha senha</v-btn
+            >
+
+            <v-btn
+              large
+              class="reset"
+              dark
+              color="grey"
+              @click="reset"
+              elevation="24"
               >Resetar</v-btn
             >
-          </v-form>
-        </v-col>
-      </v-row>
-    </v-container>
-
+          </div>
+        </v-form>
+      </v-col>
+    </v-row>
     <v-snackbar
       color="red"
       v-model="errorLogin"
@@ -48,15 +77,31 @@
       timeout="2000"
       >Usuário ou senha inválidos</v-snackbar
     >
-    <v-dialog v-model="novaConta" persistent max-width="300">
+
+    <v-dialog v-model="novaConta" persistent width="600">
       <v-card>
-        <v-card-title>Conta não encontrada.</v-card-title>
-        <v-card-text>
-          A conta não foi localizada. Deseja criar um nova conta com os dados
-          informados?
-        </v-card-text>
+        <v-card-title
+          ><h1 class="h1 margin-none">Criar nova conta</h1></v-card-title
+        >
+        <v-card-text> Ensira os dados da sua conta </v-card-text>
+        <h2 class="h2">Email:</h2>
+        <v-text-field
+          solo
+          color="orange"
+          label="Email"
+          v-model="user.email"
+        ></v-text-field>
+        <h2 class="h2">Senha:</h2>
+
+        <v-text-field
+          solo
+          color="orange"
+          label="Senha"
+          v-model="user.password"
+          :type="show ? 'text' : 'password'"
+        ></v-text-field>
+
         <v-card-actions>
-          <v-spacer></v-spacer>
           <v-btn color="green darken-1" text @click="criarNovaConta">Sim</v-btn>
           <v-btn color="red darken-1" text @click="novaConta = false"
             >Não</v-btn
@@ -64,7 +109,21 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </v-container>
+
+    <v-dialog v-model="senha" persistent width="600">
+      <v-card>
+        <v-card-title
+          ><h1 class="h1 margin-none">
+            Enviar email de recuperação
+          </h1></v-card-title
+        >
+        <v-card-actions>
+          <v-btn color="green darken-1" text @click="recuperarSenha">Sim</v-btn>
+          <v-btn color="red darken-1" text @click="senha = false">Não</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </div>
 </template>
 
 <script>
@@ -81,7 +140,6 @@ export default {
   methods: {
     reset() {
       this.user = {};
-
     },
     async login() {
       try {
@@ -109,16 +167,42 @@ export default {
       }
     },
     async criarNovaConta() {
-      this.novaConta = false;
+      this.novaConta = true;
       await fb.auth.createUserWithEmailAndPassword(
         this.user.email,
         this.user.password
       );
       this.login();
-    }, 
-    
+    },
+    async recuperarSenha() {
+      this.senha = true;
+    },
   },
 };
 </script>
 
-<style></style>
+<style>
+.box-image {
+  width: 950px;
+  height: 800px;
+  margin-left: 75px;
+  margin-top: 50px;
+
+  display: flex;
+  justify-content: center;
+}
+.col1 {
+  font-family: "Courier New", Courier, monospace;
+}
+.reset {
+  display: flex;
+  margin-left: 200px;
+}
+.login-text {
+  margin-top: 120px;
+}
+.login {
+  display: flex;
+  margin-right: 20px;
+}
+</style>

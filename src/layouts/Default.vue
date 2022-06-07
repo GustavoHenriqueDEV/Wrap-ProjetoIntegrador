@@ -5,7 +5,6 @@
       <v-btn
         rounded
         class="ml-1"
-        color="orange  "
         v-for="item of items2"
         :key="item.title"
         link
@@ -29,7 +28,6 @@
       <v-btn
         rounded
         class="ml-1"
-        color="orange "
         v-for="item of items"
         :key="item.title"
         link
@@ -45,8 +43,6 @@
     <v-main class="mt-10">
       <router-view></router-view>
     </v-main>
-
-    <v-footer app><span>Meu site &copy;2021</span> </v-footer>
   </v-app>
 </template>
 
