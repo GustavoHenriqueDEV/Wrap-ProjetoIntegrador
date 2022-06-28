@@ -3,6 +3,7 @@
     <v-container class="pa-4">
       <v-row class="mt-4" align="center" justify="center">
         <template v-for="(receita, i) in receitas">
+          <!-- eslint-disable-next-line -->
           <v-col :key="i" cols="12" md="4">
             <v-btn
               dark
@@ -20,6 +21,9 @@
             >
               <v-icon dark> mdi-pencil </v-icon>
             </v-btn>
+            <v-btn dark @click="curtirReceita"> <v-icon>mdi-heart</v-icon></v-btn>
+
+            <v-btn  class="ml-2" @click="comentar" > <v-icon>mdi-comment</v-icon></v-btn>
 
             <v-hover v-slot="{ hover }">
               <v-card
@@ -61,6 +65,7 @@ export default {
     return {
       receitas: [],
       uid: "",
+      comentario: "",
     };
   },
 
@@ -103,6 +108,14 @@ export default {
         params: { receita, id: receita.id },
       });
     },
+     async comentar() {
+      await fb.tasksCollection.doc(this.receita.id).update({
+        comentario: this.comentario
+        
+      });
+    },
+    
+    
   },
 };
 </script>
