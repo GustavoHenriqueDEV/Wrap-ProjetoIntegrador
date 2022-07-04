@@ -4,6 +4,8 @@
       <v-row class="mt-4" align="center" justify="center">
         <template v-for="(receita, i) in receitas">
           <v-col :key="i" cols="12" md="6">
+            <v-icon dark>mdi-comment</v-icon>
+            <v-icon>mdi-heart</v-icon>
             <v-hover v-slot="{ hover }">
               <v-card
                 class="rounded-xl orange lighten-5"

@@ -62,6 +62,14 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "perfil" */ "../views/dscReceita.vue"),
   },
+  {
+    path: "/comentario",
+    name: "comentario",
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "perfil" */ "../views/comentario.vue"),
+  },
+
 ];
 
 const router = new VueRouter({

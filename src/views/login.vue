@@ -47,6 +47,7 @@
               dark
               class="login black"
               color="brown"
+              @keyup.enter="login"
               @click="login"
               elevation="24"
               >Login</v-btn

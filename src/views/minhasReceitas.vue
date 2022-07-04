@@ -21,9 +21,13 @@
             >
               <v-icon dark> mdi-pencil </v-icon>
             </v-btn>
-            <v-btn dark @click="curtirReceita"> <v-icon>mdi-heart</v-icon></v-btn>
+            <v-btn dark @click="curtirReceita">
+              <v-icon>mdi-heart</v-icon></v-btn
+            >
 
-            <v-btn  class="ml-2" @click="comentar" > <v-icon>mdi-comment</v-icon></v-btn>
+            <v-btn class="ml-2" @click="comentarReceita(receita)">
+              <v-icon>mdi-comment</v-icon></v-btn
+            >
 
             <v-hover v-slot="{ hover }">
               <v-card
@@ -101,6 +105,9 @@ export default {
     irDescReceita(receita) {
       router.push({ name: "descReceita", params: { receita } });
     },
+    comentarReceita(receita) {
+      router.push({ name: "comentario", params: { receita } });
+    },
 
     editarReceita(receita) {
       router.push({
@@ -108,14 +115,11 @@ export default {
         params: { receita, id: receita.id },
       });
     },
-     async comentar() {
+    async comentar() {
       await fb.tasksCollection.doc(this.receita.id).update({
-        comentario: this.comentario
-        
+        comentario: this.comentario,
       });
     },
-    
-    
   },
 };
 </script>
