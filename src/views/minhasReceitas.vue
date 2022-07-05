@@ -21,9 +21,7 @@
             >
               <v-icon dark> mdi-pencil </v-icon>
             </v-btn>
-            <v-btn dark @click="curtirReceita">
-              <v-icon>mdi-heart</v-icon></v-btn
-            >
+            <v-btn dark> <v-icon>mdi-heart</v-icon></v-btn>
 
             <v-btn class="ml-2" @click="comentarReceita(receita)">
               <v-icon>mdi-comment</v-icon></v-btn

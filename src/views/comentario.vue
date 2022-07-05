@@ -33,7 +33,11 @@
             auto-grow
             :value="receita.comentarios"
             name="igfirebaselack"
-          ></v-textarea>
+          >
+          </v-textarea>
+          <div v-for="(comentario, index) in comentarios" :key="index">
+            {{ comentario }}
+          </div>
         </v-col>
       </v-row>
     </v-container>
@@ -52,26 +56,24 @@ export default {
     };
   },
   mounted() {
-    this.buscarReceitas();
+    this.buscarComentarios();
   },
   methods: {
+    async buscarComentarios() {
+      const logtasks = await fb.tasksCollection.get();
+      for (const doc of logtasks.docs) {
+        this.comentarios.push({
+          comentarios: doc.data().comentarios,
+        });
+      }
+      console.log(this.comentarios);
+    },
     async enviarComentario() {
       this.comentarios.push(this.comentarioTexto);
       await fb.tasksCollection.doc(this.receita.id).update({
         comentarios: this.comentarios,
       });
     },
-
-    //   async readReceita(receita) {
-    //     // eslint-disable-next-line
-    //     const receitaBanco = await fb.tasksCollection
-    //       .where("id", "==", receita.id)
-    //       .get();
-    //     for (const doc of receitaBanco.docs) {
-    //       console.log(doc);
-    //     }
-    //     console.log(this.receita);
-    //   },
   },
 };
 </script>
