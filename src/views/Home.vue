@@ -3,9 +3,15 @@
     <v-container class="pa-4">
       <v-row class="mt-4" align="center" justify="center">
         <template v-for="(receita, i) in receitas">
-          <v-col :key="i" cols="12" md="6">
-            <v-icon dark>mdi-comment</v-icon>
-            <v-icon>mdi-heart</v-icon>
+          <!-- eslint-disable-next-line -->
+          <v-col :key="i" cols="12" md="4">
+            <!-- eslint-disable-next-line -->
+            <v-btn dark> <v-icon color="red">mdi-heart</v-icon></v-btn>
+
+            <v-btn class="ml-2" @click="comentarReceita(receita)">
+              <v-icon>mdi-comment</v-icon></v-btn
+            >
+
             <v-hover v-slot="{ hover }">
               <v-card
                 class="rounded-xl orange lighten-5"
@@ -14,11 +20,11 @@
                 :class="{ 'on-hover': hover }"
               >
                 <h2 class="h2">
-                  <p class="subheading text-left black--text text-center">
+                  <p class="mt-4 subheading text-left black--text text-center">
                     {{ receita.novaReceita }}
                   </p>
                 </h2>
-                <v-img :src="receita.imgChamada" height="250px">
+                <v-img :src="receita.imgChamada" height="225px">
                   <v-card-title class="text-h6 white--text">
                     <v-row
                       class="fill-height flex-column"
@@ -70,11 +76,17 @@ export default {
     irDescReceita(receita) {
       router.push({ name: "descReceita", params: { receita } });
     },
+    comentarReceita(receita) {
+      router.push({ name: "comentario", params: { receita } });
+    },
   },
 };
 </script>
 
 <style>
+.heart {
+}
+
 .backgroud {
   background-color: orange;
 }

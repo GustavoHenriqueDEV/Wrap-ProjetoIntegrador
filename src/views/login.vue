@@ -41,7 +41,7 @@
             :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
             @click:append="show = !show"
           ></v-text-field>
-          <div class="ml-10">
+          <div class="d-flex">
             <v-btn
               large
               dark
@@ -53,7 +53,7 @@
               >Login</v-btn
             >
 
-            <v-btn @click="recuperarSenha" dark class="dark"
+            <v-btn large @click="recuperarSenha" dark class="d-flex forget dark"
               >Esqueci minha senha</v-btn
             >
 
@@ -79,22 +79,24 @@
       >Usuário ou senha inválidos</v-snackbar
     >
 
-    <v-dialog v-model="novaConta" persistent width="600">
-      <v-card>
-        <v-card-title
-          ><h1 class="h1 margin-none">Criar nova conta</h1></v-card-title
+    <v-dialog v-model="novaConta" persistent width="700">
+      <v-card width="800">
+        <v-card-title class="CardTitle"
+          ><h1 class="h1">Criar nova conta</h1></v-card-title
         >
-        <v-card-text> Ensira os dados da sua conta </v-card-text>
-        <h2 class="h2">Email:</h2>
+
+        <h2 class="h2 ml-3">Email:</h2>
         <v-text-field
+          class="pa-3 field"
           solo
           color="orange"
           label="Email"
           v-model="user.email"
         ></v-text-field>
-        <h2 class="h2">Senha:</h2>
+        <h2 class="h2 ml-3">Senha:</h2>
 
         <v-text-field
+          class="pa-3 field"
           solo
           color="orange"
           label="Senha"
@@ -103,10 +105,10 @@
         ></v-text-field>
 
         <v-card-actions>
-          <v-btn color="green darken-1" text @click="criarNovaConta">Sim</v-btn>
-          <v-btn color="red darken-1" text @click="novaConta = false"
-            >Não</v-btn
+          <v-btn color="green" text @click="criarNovaConta"
+            >Criar nova conta</v-btn
           >
+          <v-btn color="red " text @click="novaConta = false">Cancelar</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -175,9 +177,6 @@ export default {
       );
       this.login();
     },
-    async recuperarSenha() {
-      this.senha = true;
-    },
   },
 };
 </script>
@@ -205,5 +204,12 @@ export default {
 .login {
   display: flex;
   margin-right: 20px;
+}
+.CardTitle {
+  margin-left: 120px;
+  font-family: "Courier New", Courier, monospace;
+}
+.field {
+  font-family: "Courier New", Courier, monospace;
 }
 </style>

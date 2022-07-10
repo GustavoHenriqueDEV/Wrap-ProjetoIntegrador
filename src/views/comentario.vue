@@ -1,47 +1,44 @@
 <template>
-  <v-main>
-    <v-container class="text-center">
-      <div>
-        <h1 class="h1 orange--text">Faça um comentario :D</h1>
-      </div>
-    </v-container>
-    <v-container text-center class="mb-16">
-      <v-row class="elevation-3 mx-auto, rounded-xl orange lighten-3">
-        <v-col class="rounded-xl">
-          <div>
-            <h2 class="h2 mb-2 orange--text">
-              <v-icon>mdi-comment</v-icon>
-            </h2>
-          </div>
-
-          <v-textarea
-            label="Insira seu comentario aqui"
-            class="mt-3"
-            solo
-            color="black"
-            auto-grow
-            v-model="comentarioTexto"
-            name="igfirebaselack"
-          ></v-textarea>
-          <v-btn @click="enviarComentario"><v-icon>mdi-send</v-icon></v-btn>
-        </v-col>
-        <v-col>
-          <h1 class="h1">Comentarios</h1>
-          <v-textarea
-            solo
-            color="black"
-            auto-grow
-            :value="receita.comentarios"
-            name="igfirebaselack"
-          >
-          </v-textarea>
-          <div v-for="(comentario, index) in comentarios" :key="index">
-            {{ comentario }}
-          </div>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-main>
+  <v-card max-width="1300" class="my-12 vCard"
+    ><v-card-title class="justify-center"
+      ><h2>Comentarios</h2>
+      <v-icon class="ml-3" color="orange">mdi-comment</v-icon></v-card-title
+    >
+    <v-textarea
+      solo
+      background-color="grey lighten-2"
+      auto-grow
+      class="rounded-xl ml-5 mr-5 white"
+      label="O que achou desta receita?"
+    >
+    </v-textarea>
+    <div class="buttonSend">
+      <v-btn class="orange white--text"
+        ><v-icon class="mr-1">mdi-comment-check-outline</v-icon>Enviar
+        comentario</v-btn
+      >
+    </div>
+    <v-divider></v-divider>
+    <v-card-text>
+      <row>
+        <v-container class="grey lighten-5">
+          <v-row no-gutters>
+            <v-col class="orange--text mt-1" cols="12" sm="6" md="1"
+              ><v-icon class="mr-1 mb-2">mdi-account</v-icon>Maria
+              <div>10/04/20022</div>
+            </v-col>
+            <v-divider vertical></v-divider>
+            <v-col cols="6" md="8">
+              <h4 class="pa-2 h1">
+                Sensacional!!!! Exatamente 1 hora no forno. Otima consistência.
+                Cobri com papel alumínio
+              </h4>
+            </v-col>
+          </v-row>
+        </v-container>
+      </row>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
@@ -73,9 +70,19 @@ export default {
       await fb.tasksCollection.doc(this.receita.id).update({
         comentarios: this.comentarios,
       });
+      console.log(this.comentarios);
     },
   },
 };
 </script>
 
-<style></style>
+<style>
+.buttonSend {
+  margin-bottom: 10px;
+  margin-left: 1055px;
+}
+.vCard {
+  font-family: "Courier New", Courier, monospace;
+  margin-left: 250px;
+}
+</style>
