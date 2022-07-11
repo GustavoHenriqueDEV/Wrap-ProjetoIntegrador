@@ -149,6 +149,7 @@ export default {
         hora: this.hora,
         minuto: this.minuto,
         modoPreparo: this.modoPreparo,
+        comentarios: [],
       });
     },
     async atualizarReceita() {
