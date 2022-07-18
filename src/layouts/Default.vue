@@ -39,7 +39,6 @@
       <v-spacer></v-spacer>
       <v-spacer></v-spacer>
     </v-app-bar>
-
     <v-main class="mt-10">
       <router-view></router-view>
     </v-main>
