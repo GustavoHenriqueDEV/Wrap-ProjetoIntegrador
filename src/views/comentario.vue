@@ -29,7 +29,7 @@
             no-gutters
           >
             <v-col class="orange--text mt-1" cols="12" sm="6" md="1"
-              ><v-icon class="mr-1 mb-2">mdi-account</v-icon>Maria
+              ><v-icon class="mr-1 mb-2">mdi-account</v-icon>{{comentario.comentarista}}
               <div>10/04/20022</div>
             </v-col>
             <v-divider vertical></v-divider>
@@ -37,8 +37,10 @@
               <h4 class="pa-2 h1">
                 <!-- Sensacional!!!! Exatamente 1 hora no forno. Otima consistência.
                 Cobri com papel alumínio -->
-                {{ comentario }}
+                {{ comentario.texto }}
               </h4>
+            <v-divider></v-divider>
+
             </v-col>
           </v-row>
         </v-container>
@@ -53,6 +55,8 @@ export default {
   props: ["receita"],
   data() {
     return {
+      uid: "",
+      nome: "",
       comentarioTexto: "",
       comentarios: [],
       tasks: [],
@@ -60,6 +64,7 @@ export default {
   },
   mounted() {
     this.getComentario();
+    this.getNome();
   },
   methods: {
     async getComentario() {
@@ -72,9 +77,23 @@ export default {
           this.comentarios = receita.data().comentarios;
         });
     },
+    async getNome() {
+      this.uid = fb.auth.currentUser.uid;
+    const userProfile = await fb.profileCollection
+      .where("uid", "==", this.uid)
+      .get()
+      this.nome = userProfile.docs[0].data().nome 
+
+      console.log(userProfile.docs[0].data().nome)
+      console.log(this.nome)
+    },
+
 
     async enviarComentario() {
-      this.comentarios.push(this.comentarioTexto);
+      this.comentarios.push({
+        texto:this.comentarioTexto,
+        comentarista : this.nome
+      });
       console.log(this.comentarios);
       await fb.tasksCollection.doc(this.receita.id).update({
         comentarios: this.comentarios,
