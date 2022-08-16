@@ -126,6 +126,7 @@ export default {
       novaReceita: "",
       imgChamada: "",
       igredientes: "",
+      modoPreparo:"",
       hora: "",
       minuto: "",
       passos: "",
@@ -153,7 +154,6 @@ export default {
         minuto: this.minuto,
         modoPreparo: this.modoPreparo,
         comentarios: [],
-        selected: this.selected
 
       });
     },

@@ -89,7 +89,6 @@
                   <v-col class="orange--text mt-1" cols="12" sm="6" md="1"
                     ><v-icon class="mr-1 mb-2">mdi-account</v-icon
                     >{{ comentario.comentarista }}
-                    <div class="data">10/04/20022</div>
                   </v-col>
                   <v-divider vertical></v-divider>
                   <v-col class="justify-start" cols="6" md="8">
