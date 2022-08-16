@@ -2,91 +2,6 @@
   <div class="brown lighten-1 fill-height">
     <v-container class="pa-4">
       <div class="btn rounded-xl white pa-1  d-flex justify-space-between">
-      <v-checkbox 
-                  :ripple="false"
-                  class="hide-details"
-                  hide-details
-                  v-model="selected"
-                  label="Maa"
-                  value="Jon"
-                ></v-checkbox>
-                <v-checkbox
-                  :ripple="false"
-
-                  v-model="selected"
-                  label="Mssa"
-                  value="Joh"
-                ></v-checkbox>
-                <v-checkbox
-                  :ripple="false"
-
-                  v-model="selected"
-                  label="assa"
-                  value="ohn"
-                ></v-checkbox>
-                <v-checkbox
-                  :ripple="false"
-
-                  v-model="selected"
-                  label="Mass"
-                  value="hn"
-                ></v-checkbox>
-                <v-checkbox
-                  :ripple="false"
-
-                  v-model="selected"
-                  label="Massa"
-                  value="Josan"
-                ></v-checkbox>
-                <v-checkbox
-                  v-model="selected"
-                  label="Massa"
-                  value="Johnc"
-                ></v-checkbox>
-                <v-checkbox
-                  v-model="selected"
-                  label="Fria"
-                  value="Fria"
-                ></v-checkbox>
-                 <v-checkbox
-                  v-model="selected"
-                  label="Quente"
-                  value="Quente"
-                ></v-checkbox>
-                <v-checkbox
-                  v-model="selected"
-                  label="Massa"
-                  value="Johnc"
-                ></v-checkbox>
-                <v-checkbox
-                  v-model="selected"
-                  label="Fria"
-                  value="Fria"
-                ></v-checkbox>
-                 <v-checkbox
-                  v-model="selected"
-                  label="Quente"
-                  value="Quente"
-                ></v-checkbox>
-                <v-checkbox
-                  v-model="selected"
-                  label="Massa"
-                  value="Johnc"
-                ></v-checkbox>
-                <v-checkbox
-                  v-model="selected"
-                  label="Fria"
-                  value="Fria"
-                ></v-checkbox>
-                 <v-checkbox
-                  v-model="selected"
-                  label="Quente"
-                  value="Quente"
-                ></v-checkbox>
-
-
-
-
       </div>
       <v-row class="mt-4" align="center" justify="center">
         <template v-for="(receita, i) in receitas">
@@ -95,10 +10,7 @@
             <!-- eslint-disable-next-line -->
             <v-btn dark> <v-icon color="red">mdi-heart</v-icon></v-btn>
 
-            <v-btn class="ml-2" @click="comentarReceita(receita)">
-              <v-icon>mdi-comment</v-icon></v-btn
-            >
-
+            
             <v-hover v-slot="{ hover }">
               <v-card
                 class="rounded-xl orange lighten-5"

@@ -42,55 +42,8 @@
               v-model="ingredientes"
               label="Escreva cada ingrediente por linha.Exemplo: 4x ovos "
             ></v-textarea>
-            <h2 class="orange--text">Escolhe as tags da sua receita</h2>
-             <p class="blue--text">{{ selected }}</p>
-             <div class="justify-space-between d-flex">
-
-                <v-checkbox
-                  v-model="selected"
-                  label="Maa"
-                  value="Jon"
-                ></v-checkbox>
-                <v-checkbox
-                  v-model="selected"
-                  label="Mssa"
-                  value="Joh"
-                ></v-checkbox>
-                <v-checkbox
-                  v-model="selected"
-                  label="assa"
-                  value="ohn"
-                ></v-checkbox>
-                <v-checkbox
-                  v-model="selected"
-                  label="Mass"
-                  value="hn"
-                ></v-checkbox>
-                <v-checkbox
-                  v-model="selected"
-                  label="Massa"
-                  value="Josan"
-                ></v-checkbox>
-
-
-
-                <v-checkbox
-                  v-model="selected"
-                  label="Massa"
-                  value="Johnc"
-                ></v-checkbox>
-                <v-checkbox
-                  v-model="selected"
-                  label="Fria"
-                  value="Fria"
-                ></v-checkbox>
-                 <v-checkbox
-                  v-model="selected"
-                  label="Quente"
-                  value="Quente"
-                ></v-checkbox>
-             </div>
-              
+          
+             
           </v-col>
 
           <v-divider vertical></v-divider>
