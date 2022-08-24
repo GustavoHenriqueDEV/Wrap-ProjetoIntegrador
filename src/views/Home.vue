@@ -1,16 +1,29 @@
 <template>
   <div class="brown lighten-1 fill-height">
     <v-container class="pa-4">
-      <div class="btn rounded-xl white pa-1  d-flex justify-space-between">
-      </div>
+      <div class="btn rounded-xl white pa-1 d-flex justify-space-between"></div>
       <v-row class="mt-4" align="center" justify="center">
+        <v-carousel hide-on-leave hide-delimiter-background>
+          <v-carousel-item
+            @click="irDescReceita(item)"
+            class="hide-delimiters"
+            v-for="(item, i) in receitas"
+            :key="i"
+            :src="item.imgChamada"
+            reverse-transition="fade-transition"
+            transition="fade-transition"
+          ></v-carousel-item>
+        </v-carousel>
         <template v-for="(receita, i) in receitas">
           <!-- eslint-disable-next-line -->
           <v-col :key="i" cols="12" md="4">
             <!-- eslint-disable-next-line -->
-            <v-btn dark> <v-icon color="red">mdi-heart</v-icon></v-btn>
 
-            
+            <v-btn @click="curtir(receita)" dark>
+              <v-icon color="red">mdi-heart</v-icon>
+              <div>{{ receita.curtidas.length }}</div>
+            </v-btn>
+
             <v-hover v-slot="{ hover }">
               <v-card
                 class="rounded-xl orange lighten-5"
@@ -68,6 +81,7 @@ export default {
           novaReceita: doc.data().novaReceita,
           imgChamada: doc.data().imgChamada,
           modoPreparo: doc.data().modoPreparo,
+          curtidas: doc.data().curtidas,
         });
       }
       console.log(this.receitas);
@@ -78,14 +92,31 @@ export default {
     comentarReceita(receita) {
       router.push({ name: "comentario", params: { receita } });
     },
+
+    async curtir(receita) {
+      let curtidas = receita.curtidas;
+      let user = fb.auth.currentUser.uid;
+      if (curtidas.includes(user)) {
+        curtidas.splice(curtidas.indexOf(user), 1);
+        await fb.tasksCollection.doc(receita.id).update({
+          curtidas: curtidas,
+        });
+      } else {
+        curtidas.push(user);
+        await fb.tasksCollection.doc(receita.id).update({
+          curtidas: curtidas,
+        });
+      }
+      this.receitas = [];
+      this.buscarReceitas();
+    },
   },
 };
 </script>
 
 <style>
-
-
-.btn{}
+.btn {
+}
 .heart {
 }
 
