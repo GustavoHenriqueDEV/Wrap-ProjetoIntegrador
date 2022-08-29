@@ -3,17 +3,8 @@
     <v-container class="pa-4">
       <div class="btn rounded-xl white pa-1 d-flex justify-space-between"></div>
       <v-row class="mt-4" align="center" justify="center">
-        <v-carousel hide-on-leave hide-delimiter-background>
-          <v-carousel-item
-            @click="irDescReceita(item)"
-            class="hide-delimiters"
-            v-for="(item, i) in receitas"
-            :key="i"
-            :src="item.imgChamada"
-            reverse-transition="fade-transition"
-            transition="fade-transition"
-          ></v-carousel-item>
-        </v-carousel>
+        <carousel />
+
         <template v-for="(receita, i) in receitas">
           <!-- eslint-disable-next-line -->
           <v-col :key="i" cols="12" md="4">
@@ -58,8 +49,10 @@
 <script>
 import * as fb from "@/plugins/firebase";
 import router from "../router";
+import carousel from "../components/carousel";
 
 export default {
+  components: { carousel },
   data() {
     return {
       receitas: [],
@@ -115,11 +108,6 @@ export default {
 </script>
 
 <style>
-.btn {
-}
-.heart {
-}
-
 .backgroud {
   background-color: orange;
 }
