@@ -1,10 +1,8 @@
 <template>
   <div class="brown lighten-1 fill-height">
     <v-container class="pa-4">
-      <div class="btn rounded-xl white pa-1 d-flex justify-space-between"></div>
+      <div class="btn rounded-xl white"></div>
       <v-row class="mt-4" align="center" justify="center">
-        <carousel />
-
         <template v-for="(receita, i) in receitas">
           <!-- eslint-disable-next-line -->
           <v-col :key="i" cols="12" md="4">
@@ -49,10 +47,8 @@
 <script>
 import * as fb from "@/plugins/firebase";
 import router from "../router";
-import carousel from "../components/carousel";
 
 export default {
-  components: { carousel },
   data() {
     return {
       receitas: [],

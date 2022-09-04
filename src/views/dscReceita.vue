@@ -45,6 +45,10 @@
           <div class="foodName">
             <h1 class="receitaName h1 orange--text">
               {{ receita.novaReceita }}
+              <v-btn class="mt-1 ml-3" @click="curtir(receita)" dark>
+                <v-icon color="red">mdi-heart</v-icon>
+                <div>{{ receita.curtidas.length }}</div>
+              </v-btn>
             </h1>
           </div>
           <v-img
@@ -175,6 +179,23 @@ export default {
       console.log(this.comentarios);
       this.getComentario();
     },
+    async curtir(receita) {
+      let curtidas = receita.curtidas;
+      let user = fb.auth.currentUser.uid;
+      if (curtidas.includes(user)) {
+        curtidas.splice(curtidas.indexOf(user), 1);
+        await fb.tasksCollection.doc(receita.id).update({
+          curtidas: curtidas,
+        });
+      } else {
+        curtidas.push(user);
+        await fb.tasksCollection.doc(receita.id).update({
+          curtidas: curtidas,
+        });
+      }
+      this.receitas = [];
+      this.buscarReceitas();
+    },
   },
 };
 </script>
@@ -218,7 +239,7 @@ export default {
 }
 .precoBox {
   padding: 10px;
-  text-align:start;
+  text-align: start;
   height: 140px;
   border-radius: 20px;
   font-size: 20px;
