@@ -92,6 +92,7 @@ export default {
           novaReceita: doc.data().novaReceita,
           imgChamada: doc.data().imgChamada,
           modoPreparo: doc.data().modoPreparo,
+          curtidas: doc.data().curtidas,
         });
       }
       console.log(this.uid);
@@ -117,6 +118,23 @@ export default {
       await fb.tasksCollection.doc(this.receita.id).update({
         comentario: this.comentario,
       });
+    },
+    async curtir(receita) {
+      let curtidas = receita.curtidas;
+      let user = fb.auth.currentUser.uid;
+      if (curtidas.includes(user)) {
+        curtidas.splice(curtidas.indexOf(user), 1);
+        await fb.tasksCollection.doc(receita.id).update({
+          curtidas: curtidas,
+        });
+      } else {
+        curtidas.push(user);
+        await fb.tasksCollection.doc(receita.id).update({
+          curtidas: curtidas,
+        });
+      }
+      this.receitas = [];
+      this.buscarReceitas();
     },
   },
 };

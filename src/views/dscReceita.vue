@@ -144,6 +144,7 @@ export default {
           imgChamada: doc.data().imgChamada,
           modoPreparo: doc.data().modoPreparo,
           comentarios: doc.data().comentarista,
+          curtidas: doc.data().curtidas,
         });
       }
       console.log(this.receitas);
