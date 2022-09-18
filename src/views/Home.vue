@@ -8,11 +8,6 @@
           <v-col :key="i" cols="12" md="4">
             <!-- eslint-disable-next-line -->
 
-            <v-btn @click="curtir(receita)" dark>
-              <v-icon color="red">mdi-heart</v-icon>
-              <div>{{ receita.curtidas.length }}</div>
-            </v-btn>
-
             <v-hover v-slot="{ hover }">
               <v-card
                 class="rounded-xl orange lighten-5"
