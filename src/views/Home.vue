@@ -1,5 +1,6 @@
 <template>
   <div class="brown lighten-1 fill-height">
+    <Carousel/>
     <v-container class="pa-4">
       <div class="btn rounded-xl white"></div>
       <v-row class="mt-4" align="center" justify="center">
@@ -40,10 +41,12 @@
 </template>
 
 <script>
+import Carousel from '@/components/carousel.vue'
 import * as fb from "@/plugins/firebase";
 import router from "../router";
 
 export default {
+  components: {Carousel},
   data() {
     return {
       receitas: [],
