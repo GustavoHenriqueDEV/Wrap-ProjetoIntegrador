@@ -69,7 +69,13 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "perfil" */ "../views/comentario.vue"),
   },
-
+  {
+    path: "/descCarrousel",
+    name: "descCarrousel",
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "perfil" */ "../views/descCarrousel.vue"),
+  },
 ];
 
 const router = new VueRouter({

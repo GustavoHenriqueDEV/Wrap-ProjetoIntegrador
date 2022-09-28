@@ -1,6 +1,6 @@
 <template>
-  <div class="d-flex fill-height">
-    <v-row class="d-flex fill-height">
+  <container class="d-flex fill-height">
+    <v-row class="pa-0 d-flex fill-height">
       <v-col
         class="d-flex justify-content-center alighn-items-center brown"
         sm="7"
@@ -126,7 +126,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </div>
+  </container>
 </template>
 
 <script>
@@ -187,7 +187,6 @@ export default {
   height: 800px;
   margin-left: 75px;
   margin-top: 50px;
-
   display: flex;
   justify-content: center;
 }

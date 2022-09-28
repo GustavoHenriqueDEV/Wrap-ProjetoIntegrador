@@ -1,8 +1,8 @@
 <template>
-  <div class="brown lighten-1 fill-height">
+  <div class="lighten-1 fill-height">
     <v-container>
       <v-container class="mt-10" text-center>
-        <v-row class="elevation-3 mx-auto, orange lighten-4 rounded-xl">
+        <v-row class="pa-0 elevation-3 mx-auto, grey lighten-3 rounded-xl">
           <v-col cols="">
             <h1 class="orange--text h1">Formulário para envio de receita</h1>
             <v-form>
@@ -42,8 +42,6 @@
               v-model="ingredientes"
               label="Escreva cada ingrediente por linha.Exemplo: 4x ovos "
             ></v-textarea>
-          
-             
           </v-col>
 
           <v-divider vertical></v-divider>
@@ -52,7 +50,7 @@
             <v-div class="orange--text"
               ><h2 class="h2">Tempo de preparo</h2></v-div
             >
-            <v-row>
+            <v-row class="pa-0">
               <v-text-field
                 name="hora"
                 v-model="hora"
@@ -121,12 +119,12 @@ export default {
   props: ["receita"],
   data() {
     return {
-      selected:[],
+      selected: [],
       uid: "",
       novaReceita: "",
       imgChamada: "",
       igredientes: "",
-      modoPreparo:"",
+      modoPreparo: "",
       hora: "",
       minuto: "",
       passos: "",
@@ -154,7 +152,6 @@ export default {
         minuto: this.minuto,
         modoPreparo: this.modoPreparo,
         comentarios: [],
-
       });
     },
     async atualizarReceita() {
@@ -166,9 +163,7 @@ export default {
         minuto: this.minuto,
         modoPreparo: this.modoPreparo,
       });
-
     },
-    
   },
 };
 </script>

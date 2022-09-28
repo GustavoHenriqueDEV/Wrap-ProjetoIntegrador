@@ -1,5 +1,5 @@
 <template>
-  <div class="brown lighten-1 fill-height">
+  <div class="fill-height">
     <v-container class="pa-4">
       <v-row class="mt-4" align="center" justify="center">
         <template v-for="(receita, i) in receitas">
@@ -22,13 +22,13 @@
               <v-icon dark> mdi-pencil </v-icon>
             </v-btn>
 
-            <v-btn class="ml-2" @click="comentarReceita(receita)">
+            <v-btn class="ml-1" @click="comentarReceita(receita)">
               <v-icon>mdi-comment</v-icon></v-btn
             >
 
             <v-hover v-slot="{ hover }">
               <v-card
-                class="rounded-xl orange lighten-5"
+                class="rounded-xl grey lighten-2"
                 @click="irDescReceita(receita)"
                 :elevation="hover ? 12 : 2"
                 :class="{ 'on-hover': hover }"

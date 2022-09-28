@@ -58,7 +58,7 @@
                   </h3>
                   <div class="nLikes text-center">
                     <v-icon class="mb-1 mr-1" color="red">mdi-heart</v-icon
-                    >{{receita.curtidas.length}}
+                    >{{ receita.curtidas.length }}
                   </div>
                 </div>
               </v-card>
@@ -71,12 +71,12 @@
 </template>
 
 <script>
-import Carousel from '@/components/carousel.vue'
+import Carousel from "@/components/carousel.vue";
 import * as fb from "@/plugins/firebase";
 import router from "../router";
 
 export default {
-  components: {Carousel},
+  components: { Carousel },
   data() {
     return {
       receitas: [],
