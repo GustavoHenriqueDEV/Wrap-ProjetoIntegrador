@@ -1,26 +1,49 @@
 <template>
-  <v-container class="brown lighten-2" fill-height fluid>
-    <v-card class="mx-auto my-12 orange lighten-3 rounded-xl" width="680" teste>
-      <div>
-        <h1 class="text-center">
+  <v-container class="" fill-height fluid>
+    <v-card class="mx-auto grey lighten-2" height="400" width="980" teste>
+      <div class="box-info">
+        <h1 class="">
           Minhas informações
-          <v-icon large class="mr-2 mb-2" color="black">
+          <v-icon large class="ml-2 mb-1" color="black">
             mdi-badge-account-horizontal-outline</v-icon
           >
         </h1>
       </div>
-      <v-img class="" height="600" src="@/assets/images/cok.png.png"></v-img>
-
-      <v-form class="mt-5 rounded-xl">
-        <v-container fluid>
-          <v-text-field label="Nome" v-model="nome"></v-text-field>
-          <v-text-field label="Sobrenome" v-model="sobrenome"></v-text-field>
-          <v-text-field label="Telefone" v-model="telefone"></v-text-field>
-          <div class="text-center">
-            <v-btn color="grey lighten-3 " @click="salvarPerfil">Salvar</v-btn>
+      <div class="content-box">
+        <div class="d-flex controll">
+          <label class="label">Nome</label>
+          <div class="controll">
+            <input v-model="nome" class="input" type="input string email " />
           </div>
-        </v-container>
-      </v-form>
+        </div>
+        <v-divider class="horizontal"></v-divider>
+        <div class="d-flex controll">
+          <label class="label">Email</label>
+          <div class="controll">
+            <input
+              v-model="sobrenome"
+              class="input"
+              type="input string email "
+            />
+          </div>
+        </div>
+        <v-divider class="horizontal"></v-divider>
+
+        <div class="d-flex controll">
+          <label class="label">TELEFONE</label>
+          <div class="controll">
+            <input
+              v-model="telefone"
+              class="input"
+              type="input string email "
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-btn">
+        <button @click="salvarPerfil" class="btn">Salvar alterações</button>
+      </div>
     </v-card>
   </v-container>
 </template>
@@ -33,8 +56,8 @@ export default {
       nome: "",
       sobrenome: "",
       telefone: "",
-      uid: "",
       temPerfil: false,
+      uid: "",
     };
   },
   async mounted() {
@@ -73,6 +96,47 @@ export default {
 </script>
 
 <style>
+.box-info {
+  color: orange;
+  padding: 15px;
+  align-items: start;
+  text-align: start;
+}
+
+.form-btn {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.btn {
+  width: 150px;
+  height: 34px;
+  border-radius: 20px;
+  background-color: orange;
+}
+
+.controll {
+  align-items: center;
+  padding: 10px;
+}
+
+.input {
+  border: 1px solid #e7e7e7;
+  border-radius: 20px;
+  background: 0 0;
+  background-color: white;
+  padding: 10px 15px;
+  width: 500px;
+  line-height: 1.5;
+}
+
+.label {
+  align-items: center;
+  margin-right: 10px;
+  text-transform: uppercase;
+  color: #595959;
+  font-size: 14px;
+}
 .teste {
   background-color: black;
 }
