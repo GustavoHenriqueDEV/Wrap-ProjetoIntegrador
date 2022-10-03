@@ -58,7 +58,7 @@
                   </h3>
                   <div class="nLikes text-center">
                     <v-icon class="mb-1 mr-1" color="red">mdi-heart</v-icon
-                    >{{ receita.curtidas.length }}
+                    >{{ receita.curtidas.lenght }}
                   </div>
                 </div>
               </v-card>
@@ -79,6 +79,7 @@ export default {
   components: { Carousel },
   data() {
     return {
+      curtidas: 0,
       receitas: [],
     };
   },
