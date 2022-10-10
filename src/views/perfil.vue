@@ -1,6 +1,12 @@
 <template>
-  <v-container class="" fill-height fluid>
-    <v-card class="mx-auto grey lighten-2" height="400" width="980" teste>
+   <container class="d-flex fill-height">
+    <v-row class="pa-0 d-flex fill-height">
+      <v-col
+        class="d-flex justify-content-center alighn-items-center brown"
+        sm="6"
+        cols="12"
+      >
+      <v-card class="ml-2 card mx-auto grey lighten-2" height="400" width="980" teste>
       <div class="box-info">
         <h1 class="">
           Minhas informações
@@ -45,7 +51,13 @@
         <button @click="salvarPerfil" class="btn">Salvar alterações</button>
       </div>
     </v-card>
-  </v-container>
+      
+      </v-col>
+      <v-col class="fluid col1 brown lighten-5" cols="12" sm="6">
+        <div class="perfilImage"><v-img src="@/assets/images/cozinheiro.jpg" ></v-img></div>
+      </v-col>
+    </v-row>
+  </container>
 </template>
 
 <script>
@@ -96,6 +108,19 @@ export default {
 </script>
 
 <style>
+
+
+
+.perfilImage{
+  margin: x 100px;
+  width: 200px;
+  border-radius: 100px;
+}
+
+.card{
+  margin-left: 10px;
+  margin-top: 250px;
+}
 .box-info {
   color: orange;
   padding: 15px;
