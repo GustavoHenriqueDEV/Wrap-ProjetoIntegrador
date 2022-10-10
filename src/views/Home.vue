@@ -58,7 +58,7 @@
                   </h3>
                   <div class="nLikes text-center">
                     <v-icon class="mb-1 mr-1" color="red">mdi-heart</v-icon
-                    >{{ receita.curtidas.lenght }}
+                    >{{ receita.curtidas.length }}
                   </div>
                 </div>
               </v-card>
