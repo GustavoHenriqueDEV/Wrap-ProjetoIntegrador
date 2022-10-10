@@ -1,25 +1,39 @@
 <template>
    <container class="d-flex fill-height">
     <v-row class="pa-0 d-flex fill-height">
+      
+      <v-col class="fluid col1 brown lighten-5" cols="12" sm="6">
+
+        <div class="perfilImage"><v-img class="perfilImage rounded-xl"  src="@/assets/images/cozinheiro.jpg" ></v-img></div>
+        <div class="ml-5">
+          <div class="infos" >
+          <p>Nome:{{nome}}</p>
+        </div>
+        <div class="infos">
+          <p>
+          Sobrenome:{{sobrenome}}
+          </p>
+        </div>
+        <div class="infos" >
+          <p>
+            Telefone:{{telefone}}
+          </p>
+
+        </div>
+        </div>
+      </v-col>
       <v-col
         class="d-flex justify-content-center alighn-items-center brown"
         sm="6"
         cols="12"
       >
-      <v-card class="ml-2 card mx-auto grey lighten-2" height="400" width="980" teste>
-      <div class="box-info">
-        <h1 class="">
-          Minhas informações
-          <v-icon large class="ml-2 mb-1" color="black">
-            mdi-badge-account-horizontal-outline</v-icon
-          >
-        </h1>
-      </div>
-      <div class="content-box">
+      
+      <div class="container" >
+        <div class="content-box">
         <div class="d-flex controll">
           <label class="label">Nome</label>
           <div class="controll">
-            <input v-model="nome" class="input" type="input string email " />
+            <input v-model="nome"   class="input" type="input string email " />
           </div>
         </div>
         <v-divider class="horizontal"></v-divider>
@@ -46,15 +60,11 @@
           </div>
         </div>
       </div>
-
       <div class="form-btn">
         <button @click="salvarPerfil" class="btn">Salvar alterações</button>
       </div>
-    </v-card>
+      </div>
       
-      </v-col>
-      <v-col class="fluid col1 brown lighten-5" cols="12" sm="6">
-        <div class="perfilImage"><v-img src="@/assets/images/cozinheiro.jpg" ></v-img></div>
       </v-col>
     </v-row>
   </container>
@@ -108,11 +118,23 @@ export default {
 </script>
 
 <style>
+.container{
+  margin-top: 100px;
+  margin-left: 100px;
+}
 
-
+.infos{
+  margin-top: 10px;
+  padding: 10px;
+  height: 40px;
+  border-radius: 10px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: rgb(223, 218, 218);
+}
 
 .perfilImage{
-  margin: x 100px;
+  margin-top: 100px;
+  margin-left: 180px;
   width: 200px;
   border-radius: 100px;
 }
@@ -129,8 +151,7 @@ export default {
 }
 
 .form-btn {
-  margin-top: 12px;
-  text-align: center;
+  display: ;
 }
 
 .btn {
@@ -151,7 +172,8 @@ export default {
   background: 0 0;
   background-color: white;
   padding: 10px 15px;
-  width: 500px;
+  height: 30px;
+  width: 300px;
   line-height: 1.5;
 }
 
@@ -159,7 +181,7 @@ export default {
   align-items: center;
   margin-right: 10px;
   text-transform: uppercase;
-  color: #595959;
+  color: orange;
   font-size: 14px;
 }
 .teste {
