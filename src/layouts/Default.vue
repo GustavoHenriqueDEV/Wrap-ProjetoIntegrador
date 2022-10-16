@@ -1,43 +1,32 @@
 <template>
   <v-app>
-    <v-app-bar color="orange lighten-2" absolute>
-      <v-spacer></v-spacer>
-      <v-btn
-        rounded
-        class="ml-1"
-        v-for="item of items2"
-        :key="item.title"
-        link
-        :to="item.to"
-      >
-        <v-icon>{{ item.icon }}</v-icon
-        >{{ item.nome }}</v-btn
-      >
+    <v-app-bar color="orange lighten-1" absolute>
+      <div class="group1">
+        <v-btn
+          class="ml-1"
+          v-for="item of items2"
+          :key="item.title"
+          link
+          :to="item.to"
+        >
+          <v-icon>{{ item.icon }}</v-icon
+          >{{ item.nome }}</v-btn
+        >
+      </div>
 
-      <v-autocomplete
-        :items="opcao"
-        class="mt-6 ml-2 mr-2"
-        color="black"
-        rounded
-        filled
-        dense
-        placeholder="Pesquisar receita"
-        prepend-inner-icon="mdi-magnify"
-      ></v-autocomplete>
-
-      <v-btn
-        rounded
-        class="ml-1"
-        v-for="item of items"
-        :key="item.title"
-        link
-        :to="item.to"
-      >
-        <v-icon>{{ item.icon }}</v-icon
-        >{{ item.nome }}
-      </v-btn>
-      <v-spacer></v-spacer>
-      <v-spacer></v-spacer>
+      <v-img class="logoDefault" src="../assets/images/wrap.png"></v-img>
+      <div class="group2">
+        <v-btn
+          class="ml-1"
+          v-for="item of items"
+          :key="item.title"
+          link
+          :to="item.to"
+        >
+          <v-icon>{{ item.icon }}</v-icon
+          >{{ item.nome }}
+        </v-btn>
+      </div>
     </v-app-bar>
     <v-main class="mt-10">
       <router-view></router-view>
@@ -90,4 +79,17 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.group2 {
+  margin-left: 500px;
+}
+.group1 {
+  margin-left: 50px;
+  margin-right: 300px;
+}
+.logoDefault {
+  max-height: 90px;
+  margin-top: 27px;
+  max-width: 200px;
+}
+</style>
