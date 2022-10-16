@@ -1,5 +1,5 @@
 <template>
-  <div class="fill-height">
+  <div class="wallpaper fill-height">
     <v-container class="pa-4">
       <v-row class="mt-4" align="center" justify="center">
         <template v-for="(receita, i) in receitas">
@@ -139,4 +139,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.wallpaper {
+  background-image: url(../assets/images/MinhasReceitasWallpaper.png);
+}
+</style>
