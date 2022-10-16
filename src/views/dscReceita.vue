@@ -252,7 +252,7 @@ export default {
 .precoBox {
   padding: 10px;
   text-align: start;
-  height: 140px;
+  height: 390px;
   border-radius: 20px;
   font-size: 20px;
   background-color: #e0e0e0;
