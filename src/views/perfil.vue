@@ -1,73 +1,28 @@
 <template>
-   <container class="d-flex fill-height">
-    <v-row class="pa-0 d-flex fill-height">
-      
-      <v-col class="fluid col1 brown lighten-5" cols="12" sm="6">
-
-        <div class="perfilImage"><v-img class="perfilImage rounded-xl"  src="@/assets/images/cozinheiro.jpg" ></v-img></div>
-        <div class="ml-5">
-          <div class="infos" >
-          <p>Nome:{{nome}}</p>
-        </div>
-        <div class="infos">
-          <p>
-          Sobrenome:{{sobrenome}}
-          </p>
-        </div>
-        <div class="infos" >
-          <p>
-            Telefone:{{telefone}}
-          </p>
-
-        </div>
-        </div>
-      </v-col>
-      <v-col
-        class="d-flex justify-content-center alighn-items-center brown"
-        sm="6"
-        cols="12"
-      >
-      
-      <div class="container" >
-        <div class="content-box">
-        <div class="d-flex controll">
-          <label class="label">Nome</label>
-          <div class="controll">
-            <input v-model="nome"   class="input" type="input string email " />
-          </div>
-        </div>
-        <v-divider class="horizontal"></v-divider>
-        <div class="d-flex controll">
-          <label class="label">Email</label>
-          <div class="controll">
-            <input
-              v-model="sobrenome"
-              class="input"
-              type="input string email "
-            />
-          </div>
-        </div>
-        <v-divider class="horizontal"></v-divider>
-
-        <div class="d-flex controll">
-          <label class="label">TELEFONE</label>
-          <div class="controll">
-            <input
-              v-model="telefone"
-              class="input"
-              type="input string email "
-            />
-          </div>
-        </div>
+  <v-container class="perfilwallpaper" fill-height fluid>
+    <v-card class="mx-auto my-12 orange lighten-3 rounded-xl" width="680" teste>
+      <div>
+        <h1 class="text-center">
+          Minhas informações
+          <v-icon large class="mr-2 mb-2" color="black">
+            mdi-badge-account-horizontal-outline</v-icon
+          >
+        </h1>
       </div>
-      <div class="form-btn">
-        <button @click="salvarPerfil" class="btn">Salvar alterações</button>
-      </div>
-      </div>
-      
-      </v-col>
-    </v-row>
-  </container>
+      <v-img class="" height="600" src="@/assets/images/cok.png.png"></v-img>
+
+      <v-form class="mt-5 rounded-xl">
+        <v-container fluid>
+          <v-text-field label="Nome" v-model="nome"></v-text-field>
+          <v-text-field label="Sobrenome" v-model="sobrenome"></v-text-field>
+          <v-text-field label="Telefone" v-model="telefone"></v-text-field>
+          <div class="text-center">
+            <v-btn color="grey lighten-3 " @click="salvarPerfil">Salvar</v-btn>
+          </div>
+        </v-container>
+      </v-form>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -78,8 +33,8 @@ export default {
       nome: "",
       sobrenome: "",
       telefone: "",
-      temPerfil: false,
       uid: "",
+      temPerfil: false,
     };
   },
   async mounted() {
@@ -118,71 +73,8 @@ export default {
 </script>
 
 <style>
-.container{
-  margin-top: 100px;
-  margin-left: 100px;
-}
-
-.infos{
-  margin-top: 10px;
-  padding: 10px;
-  height: 40px;
-  border-radius: 10px;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  background-color: rgb(223, 218, 218);
-}
-
-.perfilImage{
-  margin-top: 100px;
-  margin-left: 180px;
-  width: 200px;
-  border-radius: 100px;
-}
-
-.card{
-  margin-left: 10px;
-  margin-top: 250px;
-}
-.box-info {
-  color: orange;
-  padding: 15px;
-  align-items: start;
-  text-align: start;
-}
-
-.form-btn {
-  display: ;
-}
-
-.btn {
-  width: 150px;
-  height: 34px;
-  border-radius: 20px;
-  background-color: orange;
-}
-
-.controll {
-  align-items: center;
-  padding: 10px;
-}
-
-.input {
-  border: 1px solid #e7e7e7;
-  border-radius: 20px;
-  background: 0 0;
-  background-color: white;
-  padding: 10px 15px;
-  height: 30px;
-  width: 300px;
-  line-height: 1.5;
-}
-
-.label {
-  align-items: center;
-  margin-right: 10px;
-  text-transform: uppercase;
-  color: orange;
-  font-size: 14px;
+.perfilwallpaper {
+  background-image: url(../assets/images/perfilWallpaper.png);
 }
 .teste {
   background-color: black;
