@@ -2,17 +2,21 @@
   <container class="d-flex fill-height">
     <v-row class="pa-0 d-flex fill-height">
       <v-col
-        class="d-flex justify-content-center alighn-items-center brown"
+        class="d-flex justify-content-center alighn-items-center orange"
         sm="7"
         cols="12"
       >
         <div class="box-image">
-          <v-img class="rounded-xl" src="@/assets/images/leal.png"></v-img>
+          <v-img class="wrapImage" src="../assets/images/wrap2.png"></v-img>
         </div>
       </v-col>
-      <v-col class="fluid col1 brown lighten-5" cols="12" sm="5">
-        <h1 class="login-text h1 black--text text-center">Login</h1>
-        <v-form class="mt-12">
+
+      <v-col class="div-diagonal fluid col1" cols="12" sm="5">
+        <div class="login-text h1 black--text text-center">
+          <v-img src="../assets/images/login.png"></v-img>
+        </div>
+
+        <v-form class="forms">
           <v-div class="blue--text ml-2"
             >não possui uma conta?
             <v-btn
@@ -46,15 +50,11 @@
               large
               dark
               class="login black"
-              color="brown"
+              color="blue"
               @keyup.enter="login"
               @click="login"
               elevation="24"
               >Login</v-btn
-            >
-
-            <v-btn large @click="recuperarSenha" dark class="d-flex forget dark"
-              >Esqueci minha senha</v-btn
             >
 
             <v-btn
@@ -198,7 +198,10 @@ export default {
   margin-left: 200px;
 }
 .login-text {
-  margin-top: 120px;
+  margin-left: 170px;
+  margin-bottom: 190px;
+  height: 100px;
+  width: 400px;
 }
 .login {
   display: flex;
@@ -210,5 +213,8 @@ export default {
 }
 .field {
   font-family: "Courier New", Courier, monospace;
+}
+.div-diagonal {
+  -webkit-transform: skew(0deg);
 }
 </style>
