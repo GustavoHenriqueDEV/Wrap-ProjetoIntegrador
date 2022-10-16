@@ -1,5 +1,5 @@
 <template>
-  <div class="lighten-1 fill-height">
+  <div class="teste1 lighten-1 fill-height">
     <v-container>
       <v-container class="mt-10" text-center>
         <v-row class="pa-0 elevation-3 mx-auto, grey lighten-3 rounded-xl">
@@ -18,16 +18,17 @@
               >
               </v-text-field>
             </v-form>
+            <v-text-field
+              solo
+              prepend-inner-icon="mdi-camera"
+              label="Adicionar link da imagem "
+              color="red darken-1"
+              v-model="imgChamada"
+            ></v-text-field>
+            <div class="preVisu">
+              <v-img>{{ imgChamada }}</v-img>
+            </div>
 
-            <template>
-              <v-text-field
-                solo
-                prepend-inner-icon="mdi-camera"
-                label="Adicionar link da imagem "
-                color="red darken-1"
-                v-model="imgChamada"
-              ></v-text-field>
-            </template>
             <v-divider></v-divider>
             <v-div>
               <h2 class="h2 mt-2 orange--text">
@@ -123,7 +124,7 @@ export default {
       uid: "",
       novaReceita: "",
       imgChamada: "",
-      igredientes: "",
+      ingredientes: "",
       modoPreparo: "",
       hora: "",
       minuto: "",
@@ -169,4 +170,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.preVisu {
+  height: 150px;
+}
+
+.teste1 {
+  background-image: url(../assets/images/wallpaper.png);
+}
+</style>
