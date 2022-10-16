@@ -1,9 +1,7 @@
 <template>
-  <div class="pt-3 grey lighten-4 fill-height">
+  <div class="teste3 pt-3 fill-height">
     <Carousel />
-
     <div class="destaque fill-height pt-6">MAIS DELÍCIAS</div>
-
     <container>
       <v-row class="mt-10 destaqueRow pl-16" align="center" justify="center">
         <template v-for="(receita, i) in receitas">
@@ -44,8 +42,10 @@
                       style="height: 35px"
                     >
                       <div class="preco">
-                        R$:
-                        {{ receita.preco }}
+                        {{ receita.hora }}
+                        hora e
+                        {{ receita.minuto }}
+                        minutos
                       </div>
                     </div>
                   </v-expand-transition>
@@ -174,5 +174,8 @@ export default {
 }
 .backgroud {
   background-color: orange;
+}
+.teste3 {
+  background-image: url(../assets/images/teste1.png);
 }
 </style>
