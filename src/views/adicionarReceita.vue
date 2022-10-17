@@ -26,7 +26,7 @@
               v-model="imgChamada"
             ></v-text-field>
             <div class="preVisu">
-              <v-img>{{ imgChamada }}</v-img>
+              <img class="img" :src="imgChamada" />
             </div>
 
             <v-divider></v-divider>
@@ -171,7 +171,13 @@ export default {
 </script>
 
 <style>
+.img {
+  margin-bottom: 10px;
+  max-width: 2200px;
+  max-height: 150px;
+}
 .preVisu {
+  margin-bottom: 10px;
   height: 150px;
 }
 
