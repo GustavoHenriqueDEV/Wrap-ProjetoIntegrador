@@ -13,7 +13,7 @@
 
       <v-col class="div-diagonal fluid col1" cols="12" sm="5">
         <div class="login-text h1 black--text text-center">
-          <v-img src="../assets/images/login.png"></v-img>
+          <v-img class="loginpng" src="../assets/images/login.png"></v-img>
         </div>
 
         <v-form class="forms">
@@ -182,6 +182,10 @@ export default {
 </script>
 
 <style>
+.loginpng{
+  max-height: 300px;
+  max-width: 420px;
+}
 .box-image {
   width: 950px;
   height: 800px;
