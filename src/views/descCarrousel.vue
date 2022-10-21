@@ -148,6 +148,18 @@ export default {
       }
       console.log(this.receitas);
     },
+    async enviarComentario() {
+      this.comentarios.push({
+        texto: this.comentarioTexto,
+        comentarista: this.nome,
+      });
+      console.log(this.comentarios);
+      await fb.tasksCollection.doc(this.receita.id).update({
+        comentarios: this.comentarios,
+      });
+      console.log(this.comentarios);
+      this.getComentario();
+    },
     async getComentario() {
       await fb.db
         .collection("tasks")
@@ -167,18 +179,7 @@ export default {
       console.log(userProfile.docs[0].data().nome);
       console.log(this.nome);
     },
-    async enviarComentario() {
-      this.comentarios.push({
-        texto: this.comentarioTexto,
-        comentarista: this.nome,
-      });
-      console.log(this.comentarios);
-      await fb.tasksCollection.doc(this.receita.id).update({
-        comentarios: this.comentarios,
-      });
-      console.log(this.comentarios);
-      this.getComentario();
-    },
+
     async curtir(receita) {
       let curtidas = receita.curtidas;
       let user = fb.auth.currentUser.uid;

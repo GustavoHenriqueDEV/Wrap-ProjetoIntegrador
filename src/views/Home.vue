@@ -107,9 +107,6 @@ export default {
     irDescReceita(receita) {
       router.push({ name: "descReceita", params: { receita } });
     },
-    comentarReceita(receita) {
-      router.push({ name: "comentario", params: { receita } });
-    },
 
     async curtir(receita) {
       let curtidas = receita.curtidas;
@@ -176,6 +173,6 @@ export default {
   background-color: orange;
 }
 .teste3 {
-  background-image: url(../assets/images/teste1.png);
+  background-color: #ffe4c8;
 }
 </style>

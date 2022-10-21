@@ -29,7 +29,8 @@
             no-gutters
           >
             <v-col class="orange--text mt-1" cols="12" sm="6" md="1"
-              ><v-icon class="mr-1 mb-2">mdi-account</v-icon>{{comentario.comentarista}}
+              ><v-icon class="mr-1 mb-2">mdi-account</v-icon
+              >{{ comentario.comentarista }}
             </v-col>
             <v-divider vertical></v-divider>
             <v-col cols="6" md="8">
@@ -38,8 +39,7 @@
                 Cobri com papel alumínio -->
                 {{ comentario.texto }}
               </h4>
-            <v-divider></v-divider>
-
+              <v-divider></v-divider>
             </v-col>
           </v-row>
         </v-container>
@@ -66,6 +66,18 @@ export default {
     this.getNome();
   },
   methods: {
+    async enviarComentario() {
+      this.comentarios.push({
+        texto: this.comentarioTexto,
+        comentarista: this.nome,
+      });
+      console.log(this.comentarios);
+      await fb.tasksCollection.doc(this.receita.id).update({
+        comentarios: this.comentarios,
+      });
+      console.log(this.comentarios);
+      this.getComentario();
+    },
     async getComentario() {
       await fb.db
         .collection("tasks")
@@ -78,28 +90,15 @@ export default {
     },
     async getNome() {
       this.uid = fb.auth.currentUser.uid;
-    const userProfile = await fb.profileCollection
-      .where("uid", "==", this.uid)
-      .get()
-      this.nome = userProfile.docs[0].data().nome 
+      const userProfile = await fb.profileCollection
+        .where("uid", "==", this.uid)
+        .get();
+      this.nome = userProfile.docs[0].data().nome;
 
-      console.log(userProfile.docs[0].data().nome)
-      console.log(this.nome)
+      console.log(userProfile.docs[0].data().nome);
+      console.log(this.nome);
     },
 
-
-    async enviarComentario() {
-      this.comentarios.push({
-        texto:this.comentarioTexto,
-        comentarista : this.nome
-      });
-      console.log(this.comentarios);
-      await fb.tasksCollection.doc(this.receita.id).update({
-        comentarios: this.comentarios,
-      });
-      console.log(this.comentarios);
-      this.getComentario();
-    },
     metodoTeste() {
       console.log(this.comentarioTexto);
     },

@@ -1,5 +1,5 @@
 <template>
-  <container class="d-flex fill-height">
+  <container name="a" class="d-flex fill-height">
     <v-row class="pa-0 d-flex fill-height">
       <v-col
         class="d-flex justify-content-center alighn-items-center orange"
@@ -17,8 +17,8 @@
         </div>
 
         <v-form class="forms">
-          <v-div class="blue--text ml-2"
-            >não possui uma conta?
+          <div class="blue--text ml-2">
+            não possui uma conta?
             <v-btn
               small
               class="mb-1 novaConta"
@@ -27,7 +27,7 @@
               elevation="24"
               >Criar conta</v-btn
             >
-          </v-div>
+          </div>
           <v-text-field
             solo
             orange--text
@@ -112,20 +112,6 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-
-    <v-dialog v-model="senha" persistent width="600">
-      <v-card>
-        <v-card-title
-          ><h1 class="h1 margin-none">
-            Enviar email de recuperação
-          </h1></v-card-title
-        >
-        <v-card-actions>
-          <v-btn color="green darken-1" text @click="recuperarSenha">Sim</v-btn>
-          <v-btn color="red darken-1" text @click="senha = false">Não</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
   </container>
 </template>
 
@@ -182,7 +168,7 @@ export default {
 </script>
 
 <style>
-.loginpng{
+.loginpng {
   max-height: 300px;
   max-width: 420px;
 }

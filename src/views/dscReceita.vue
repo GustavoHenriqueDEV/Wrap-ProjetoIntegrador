@@ -156,13 +156,24 @@ export default {
       }
       console.log(this.receitas);
     },
+    async enviarComentario() {
+      this.uid = fb.auth.currentUser.uid;
+      this.comentarios.push({
+        uid: this.uid,
+        texto: this.comentarioTexto,
+        comentarista: this.nome,
+      });
+      await fb.tasksCollection.doc(this.receita.id).update({
+        comentarios: this.comentarios,
+      });
+      this.getComentario();
+    },
     async getComentario() {
       await fb.db
         .collection("tasks")
         .doc(this.receita.id)
         .get()
         .then((receita) => {
-          console.log(receita.data());
           this.comentarios = receita.data().comentarios;
         });
     },
@@ -172,20 +183,6 @@ export default {
         .where("uid", "==", this.uid)
         .get();
       this.nome = userProfile.docs[0].data().nome;
-      console.log(userProfile.docs[0].data().nome);
-      console.log(this.nome);
-    },
-    async enviarComentario() {
-      this.comentarios.push({
-        texto: this.comentarioTexto,
-        comentarista: this.nome,
-      });
-      console.log(this.comentarios);
-      await fb.tasksCollection.doc(this.receita.id).update({
-        comentarios: this.comentarios,
-      });
-      console.log(this.comentarios);
-      this.getComentario();
     },
     async curtir(receita) {
       let curtidas = receita.curtidas;

@@ -30,11 +30,11 @@
             </div>
 
             <v-divider></v-divider>
-            <v-div>
+            <div>
               <h2 class="h2 mt-2 orange--text">
                 <v-icon>mdi-noodles</v-icon>Ingredientes
               </h2>
-            </v-div>
+            </div>
             <v-textarea
               name="ingredientes"
               solo
@@ -48,9 +48,7 @@
           <v-divider vertical></v-divider>
 
           <v-col class="mt-6">
-            <v-div class="orange--text"
-              ><h2 class="h2">Tempo de preparo</h2></v-div
-            >
+            <div class="orange--text"><h2 class="h2">Tempo de preparo</h2></div>
             <v-row class="pa-0">
               <v-text-field
                 name="hora"
@@ -76,7 +74,7 @@
             </v-row>
             <v-divider></v-divider>
 
-            <v-div>
+            <div>
               <h2 class="h2 orange--text">
                 <v-icon class="gray">mdi-food-takeout-box</v-icon>
                 Modo de preparo
@@ -90,17 +88,17 @@
                 auto-grow
                 label="Descreva os passos por linha.  "
               ></v-textarea>
-            </v-div>
-            <v-div v-if="this.receita != undefined">
+            </div>
+            <div v-if="this.receita != undefined">
               <v-btn @click="atualizarReceita" rounded color="orange"
                 >Atualizar receita</v-btn
               >
-            </v-div>
-            <v-div v-else>
+            </div>
+            <div v-else>
               <v-btn @click="adicionar" block rounded color="orange"
                 >Enviar receita</v-btn
               >
-            </v-div>
+            </div>
           </v-col>
           <v-col>
             <v-img
@@ -129,6 +127,9 @@ export default {
       hora: "",
       minuto: "",
       passos: "",
+      comentarios: [],
+      comentarioTexto: "",
+      comentarista: "",
     };
   },
   created() {
@@ -154,6 +155,7 @@ export default {
         modoPreparo: this.modoPreparo,
         comentarios: [],
         curtidas: [],
+        comentarioTexto: "",
       });
     },
     async atualizarReceita() {

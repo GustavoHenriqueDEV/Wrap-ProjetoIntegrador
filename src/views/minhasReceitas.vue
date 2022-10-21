@@ -50,6 +50,7 @@
                 </v-img>
               </v-card>
             </v-hover>
+            <div class="red">{{ receita.comentarios }}</div>
           </v-col>
         </template>
       </v-row>
@@ -67,12 +68,16 @@ export default {
       receitas: [],
       uid: "",
       comentario: "",
+      mycoments: [],
     };
   },
 
   mounted() {
     this.buscarReceitas();
+    this.getComentarios();
   },
+  /**USAR A MESMA LOGICA PARA FAZER UM GETCOMENTARIO ((INICIALMENTE)) */
+  //QUANDO O USUAIRO COMENTAR O UID DELE PRECISA IR JUNTO PARA QUE EU POSSA RELACIONAR
   methods: {
     async buscarReceitas() {
       this.receitas = [];
@@ -80,7 +85,6 @@ export default {
       const logtasks = await fb.tasksCollection
         .where("uid", "==", this.uid)
         .get();
-
       for (const doc of logtasks.docs) {
         this.receitas.push({
           uid: this.uid,
@@ -92,10 +96,23 @@ export default {
           imgChamada: doc.data().imgChamada,
           modoPreparo: doc.data().modoPreparo,
           curtidas: doc.data().curtidas,
+          comentarios: doc.data().comentarios,
         });
       }
-      console.log(this.uid);
     },
+    async getComentarios() {
+      this.uid = fb.auth.currentUser.uid;
+      const logcoment = await fb.tasksCollection
+        .where("uid", "==", this.uid)
+        .get();
+      for (const doc of logcoment.docs) {
+        this.mycoments.push({
+          comentarios: doc.data().comentarios,
+        });
+      }
+      console.log(this.mycoments);
+    },
+
     async deletarReceita(id) {
       await fb.tasksCollection.doc(id).delete();
       this.buscarReceitas();
