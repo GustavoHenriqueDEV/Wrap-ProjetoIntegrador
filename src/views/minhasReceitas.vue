@@ -50,7 +50,7 @@
                 </v-img>
               </v-card>
             </v-hover>
-            <div class="red">{{ receita.comentarios }}</div>
+           
           </v-col>
         </template>
       </v-row>
