@@ -99,13 +99,7 @@
                     <div class="comentario">
                       <h4 class="pa-2">
                         {{ comentario.texto }}
-                        <v-btn
-                          dark
-                          class="red lighten-1"
-                          @click="deletarComentario(receita.id)"
-                        >
-                          <v-icon>mdi-trash-can-outline</v-icon>
-                        </v-btn>
+                
                       </h4>
                     </div>
                     <v-divider></v-divider>
