@@ -59,9 +59,4 @@ Este projeto está licenciado sob a licença MIT. Sinta-se à vontade para usá-
 📞 Contato
 Para mais informações ou suporte, visite o repositório do projeto no GitHub: Wrap-ProjetoIntegrador.
 
-perl
-Copiar código
-
-Você pode copiar e colar este conteúdo diretamente no arquivo `README.md` do seu repositório. Se precisar de ajustes ou adicionar seções extras, estou à disposição para ajudar! 😊
-::contentReference[oaicite:0]{index=0}
 
